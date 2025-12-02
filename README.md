@@ -98,7 +98,7 @@ _Frontend runs at:_
 
 ## 🔗 API Endpoints (Spring Boot)
 ```bash
-| Method | Endpoint           | Description       |
+| Method | Endpoint          | Description      |
 | ------ | ----------------- | ---------------- |
 | GET    | `/api/notes`      | Get all notes    |
 | GET    | `/api/notes/{id}` | Get note by ID   |
