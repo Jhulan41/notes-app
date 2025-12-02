@@ -1,0 +1,14 @@
+# Backend
+notes-backend/target/
+notes-backend/.idea/
+notes-backend/*.iml
+
+# Frontend
+notes-frontend/node_modules/
+notes-frontend/dist/
+notes-frontend/.angular/
+notes-frontend/.idea/
+
+# OS / editor
+.DS_Store
+*.log
