@@ -9,6 +9,111 @@ notes-frontend/dist/
 notes-frontend/.angular/
 notes-frontend/.idea/
 
+
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+####
+
 # OS / editor
 .DS_Store
 *.log
+
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# VS Code
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Maven wrapper
+mvnw
+mvnw.cmd
+
+# Generated files
+*.class
+
+# Temporary files
+*.tmp
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# macOS
+.DS_Store
+
+# Spring Boot specific
+spring-boot-devtools.properties
+
+# IntelliJ module files
+*.iws
+
+# JUnit
+test-results/
+surefire-reports/
+
+# Environment files
+.env
+*.env
+
+# Database
+*.db
+
+# Others
+dependency-reduced-pom.xml
+release.properties
