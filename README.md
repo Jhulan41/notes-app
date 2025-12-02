@@ -26,6 +26,7 @@ A full-stack Notes Management application built with **Spring Boot** (Backend) a
 
 ## 📂 Project Structure
 
+```bash
 notes-app/
 │
 ├── notes-backend/
@@ -41,7 +42,7 @@ notes-app/
 │ └── README.md (optional)
 │
 └── README.md <-- (THIS FILE)
-
+```
 
 ---
 
@@ -96,7 +97,7 @@ _Frontend runs at:_
 ---
 
 ## 🔗 API Endpoints (Spring Boot)
-
+```bash
 | Method | Endpoint           | Description       |
 | ------ | ----------------- | ---------------- |
 | GET    | `/api/notes`      | Get all notes    |
@@ -104,7 +105,7 @@ _Frontend runs at:_
 | POST   | `/api/notes`      | Create note      |
 | PUT    | `/api/notes/{id}` | Update note      |
 | DELETE | `/api/notes/{id}` | Delete note      |
-
+```
 ---
 
 ## ✨ Angular Features Implemented
@@ -118,7 +119,7 @@ _Frontend runs at:_
 ---
 
 ## 🧠 Folder Structure (`notes-frontend`)
-
+```bash
 src/app/
 │
 ├── components/
@@ -131,7 +132,7 @@ src/app/
 │
 ├── app.routes.ts
 └── app.ts
-
+```
 
 
 ---
