@@ -1,1 +1,14 @@
-<p>update-note works!</p>
+<h2>Edit Note</h2>
+
+<form (ngSubmit)="updateNote()">
+
+  <label>Title</label>
+  <input type="text" [(ngModel)]="note.title" name="title" required />
+
+  <label>Content</label>
+  <textarea [(ngModel)]="note.content" name="content" required></textarea>
+
+  <button type="submit">Update Note</button>
+  <button type="button" routerLink="/notes">Cancel</button>
+
+</form>
