@@ -1,0 +1,18 @@
+<h2>Create New Note</h2>
+
+<form (ngSubmit)="createNote()">
+
+  <label>Title:</label>
+  <input type="text" [(ngModel)]="note.title" name="title" required />
+
+  <br/><br/>
+
+  <label>Content:</label>
+  <textarea [(ngModel)]="note.content" name="content" rows="5" required></textarea>
+
+  <br/><br/>
+
+  <button type="submit">Create</button>
+  <button routerLink="/notes">Cancel</button>
+
+</form>

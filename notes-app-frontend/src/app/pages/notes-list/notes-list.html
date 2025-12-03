@@ -1,0 +1,17 @@
+<h2>All Notes</h2>
+
+<div *ngIf="notes.length === 0">
+  <p>No notes found.</p>
+</div>
+
+<ul>
+  <li *ngFor="let note of notes">
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.content }}</p>
+
+    <button [routerLink]="['/edit', note.id]">Edit</button>
+    <button (click)="deleteNote(note.id)">Delete</button>
+  </li>
+</ul>
+
+<button routerLink="/create">Create New Note</button>
