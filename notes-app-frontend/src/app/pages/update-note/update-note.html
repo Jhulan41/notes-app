@@ -1,12 +1,20 @@
 <h2>Edit Note</h2>
 
-<form (ngSubmit)="updateNote()">
+<form [formGroup]="noteForm" (ngSubmit)="updateNote()">
 
   <label>Title</label>
-  <input type="text" [(ngModel)]="note.title" name="title" required />
+  <input type="text" formControlName="title" />
+  <div class="error" *ngIf="noteForm.get('title')?.touched && noteForm.get('title')?.invalid">
+    <small *ngIf="noteForm.get('title')?.errors?.['required']">Title is required</small>
+    <small *ngIf="noteForm.get('title')?.errors?.['minlength']">Minimum 3 characters</small>
+  </div>
 
   <label>Content</label>
-  <textarea [(ngModel)]="note.content" name="content" required></textarea>
+  <textarea formControlName="content"></textarea>
+  <div class="error" *ngIf="noteForm.get('content')?.touched && noteForm.get('content')?.invalid">
+    <small *ngIf="noteForm.get('content')?.errors?.['required']">Content is required</small>
+    <small *ngIf="noteForm.get('content')?.errors?.['minlength']">Minimum 10 characters</small>
+  </div>
 
   <button type="submit">Update Note</button>
   <button type="button" routerLink="/notes">Cancel</button>

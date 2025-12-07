@@ -1,55 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../services/note.service';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-update-note',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './update-note.html',
   styleUrls: ['./update-note.css'],
 })
 export class UpdateNoteComponent implements OnInit {
 
-  id!: number;
-  note: any = {
-    title: '',
-    content: ''
-  };
+  noteForm!: FormGroup;
+  noteId!: number;
 
   constructor(
+    private fb: FormBuilder,
     private route: ActivatedRoute,
-    private noteService: NoteService,
-    private router: Router
+    private router: Router,
+    private noteService: NoteService
   ) {}
 
-  ngOnInit() {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadNote();
+  ngOnInit(): void {
+    this.noteId = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.noteForm = this.fb.group({
+      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      content: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2000)]]
+    });
+
+    this.loadNoteData();
   }
 
-  loadNote() {
-    this.noteService.getNoteById(this.id).subscribe({
-      next: (data) => {
-        this.note = data;
-      },
-      error: (err) => {
-        console.error("Failed to load note", err);
-      }
+  loadNoteData() {
+    this.noteService.getNoteById(this.noteId).subscribe(note => {
+      this.noteForm.patchValue({
+        title: note.title,
+        content: note.content
+      });
     });
   }
 
   updateNote() {
-    this.noteService.updateNote(this.id, this.note).subscribe({
-      next: () => {
-        alert("Note updated!");
-        this.router.navigate(['/notes']);
-      },
-      error: (err) => {
-        console.error("Update failed", err);
-      }
+    if (this.noteForm.invalid) {
+      this.noteForm.markAllAsTouched();
+      return;
+    }
+
+    this.noteService.updateNote(this.noteId, this.noteForm.value).subscribe(() => {
+      alert("Note updated successfully!");
+      this.router.navigate(['/notes']);
     });
   }
 }

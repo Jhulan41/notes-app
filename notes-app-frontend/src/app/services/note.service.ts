@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Note } from '../models/note.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,20 +12,20 @@ export class NoteService {
 
   constructor(private http: HttpClient) {}
 
-  getAllNotes(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
-  }
-
-  createNote(note: any): Observable<any> {
-    return this.http.post<any[]> (`${this.baseUrl}/newnote`, note);
-  } 
-
-  getNoteById(id: number): Observable<any> {
-  return this.http.get<any>(`${this.baseUrl}/${id}`);
+  getAllNotes(): Observable<Note[]> {
+  return this.http.get<Note[]>(this.baseUrl);
 }
 
-updateNote(id: number, note: any): Observable<any> {
-  return this.http.put<any>(`${this.baseUrl}/${id}`, note);
+  createNote(note: Note): Observable<any> {
+    return this.http.post<Note[]> (`${this.baseUrl}/newnote`, note);
+  } 
+
+  getNoteById(id: number): Observable<Note> {
+  return this.http.get<Note>(`${this.baseUrl}/${id}`);
+}
+
+updateNote(id: number, note: Note): Observable<Note> {
+  return this.http.put<Note>(`${this.baseUrl}/${id}`, note);
 }
 
 deleteNote(id: number): Observable<any> {
