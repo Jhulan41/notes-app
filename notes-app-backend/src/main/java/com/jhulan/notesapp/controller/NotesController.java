@@ -2,6 +2,9 @@ package com.jhulan.notesapp.controller;
 
 import com.jhulan.notesapp.entity.Notes;
 import com.jhulan.notesapp.service.NoteService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +21,7 @@ public class NotesController {
     }
 
     @PostMapping("/newnote")
-    public Notes createNotes(@RequestBody Notes notes){
+    public Notes createNotes(@Valid @RequestBody Notes notes){
         return noteService.createNotes(notes);
     }
 
@@ -33,7 +36,7 @@ public class NotesController {
     }
 
     @PutMapping("/{id}")
-    public Notes updateNotes(@PathVariable Long id, @RequestBody Notes notes){
+    public Notes updateNotes(@PathVariable Long id, @Valid @RequestBody Notes notes){
         return noteService.updateNotes(id,notes);
     }
 
